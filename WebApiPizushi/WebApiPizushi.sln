@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiPizushi", "WebApiPizushi\WebApiPizushi.csproj", "{C7880722-5811-4380-8810-C9CA291BA561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{18BA27D3-B5A9-4322-A201-E093A261CDDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{0FEF4FC4-14E1-4809-BD23-EF13D39FFB85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7880722-5811-4380-8810-C9CA291BA561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7880722-5811-4380-8810-C9CA291BA561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7880722-5811-4380-8810-C9CA291BA561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7880722-5811-4380-8810-C9CA291BA561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18BA27D3-B5A9-4322-A201-E093A261CDDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18BA27D3-B5A9-4322-A201-E093A261CDDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18BA27D3-B5A9-4322-A201-E093A261CDDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18BA27D3-B5A9-4322-A201-E093A261CDDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FEF4FC4-14E1-4809-BD23-EF13D39FFB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FEF4FC4-14E1-4809-BD23-EF13D39FFB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FEF4FC4-14E1-4809-BD23-EF13D39FFB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FEF4FC4-14E1-4809-BD23-EF13D39FFB85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DAD56D26-BF2D-4844-AFC6-A146F228991A}
+	EndGlobalSection
+EndGlobal
