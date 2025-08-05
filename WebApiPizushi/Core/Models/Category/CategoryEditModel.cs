@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
-namespace Core.Models.Category;
-
-public class CategoryEditModel
+namespace Core.Models.Category
 {
-    public long Id { get; set; }
-    public string Name { get; set; } = string.Empty;
+    public class CategoryEditModel
+    {
+        public long Id { get; set; }
 
-    public string Slug { get; set; } = string.Empty;
-    public IFormFile? ImageFile { get; set; } = null;
+        public string Name { get; set; } = String.Empty;
+
+        public string Slug { get; set; } = String.Empty; 
+        
+        public IFormFile? ImageFile { get; set; } = null;
+    }
 }

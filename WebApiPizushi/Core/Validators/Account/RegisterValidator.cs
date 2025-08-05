@@ -9,32 +9,34 @@ public class RegisterValidator : AbstractValidator<RegisterModel>
 {
     public RegisterValidator(UserManager<UserEntity> userManager)
     {
-        RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("Email is required")
-                .EmailAddress().WithMessage("Incorrect format of email")
-                .DependentRules(() =>
-                {
-                    RuleFor(x => x.Email)
-                        .MustAsync(async (email, cancellation) =>
-                        {
-                            var user = await userManager.FindByEmailAsync(email);
-                            return user == null;
-                        }).WithMessage("User with this email already exists");
-                });
+        RuleFor(x => x.FirstName)
+            .NotEmpty().WithMessage("Ім'я є обов'язковим")
+            .MaximumLength(100).WithMessage("Ім'я не може бути довше 100 символів");
 
+        RuleFor(x => x.LastName)
+            .NotEmpty().WithMessage("Прізвище є обов'язковим")
+            .MaximumLength(100).WithMessage("Прізвище не може бути довше 100 символів");
+
+        RuleFor(x => x.Email)
+            .NotEmpty().WithMessage("Електронна пошта є обов’язковою")
+            .EmailAddress().WithMessage("Некоректний формат електронної пошти");
+
+        RuleFor(x => x.Email)
+            .MustAsync(async (email, cancellation) =>
+            {
+                var user = await userManager.FindByEmailAsync(email);
+                return user == null;
+            })
+            .WithMessage("Користувач з такою поштою вже зареєстрований")
+            .When(x => !string.IsNullOrWhiteSpace(x.Email));
 
         RuleFor(x => x.Password)
-                .NotEmpty().WithMessage("Password is required")
-                .MinimumLength(6).WithMessage("Password should contain at least 6 characters");
-        RuleFor(x => x.ImageFile)
-                .NotEmpty()
-                .WithMessage("Image file is required");
-        RuleFor(x => x.FirstName)
-                .NotEmpty().WithMessage("First name is required")
-                .MaximumLength(50).WithMessage("Name cannot be longer than 50 characters");
-        RuleFor(x => x.LastName)
-                .NotEmpty().WithMessage("Last name is required")
-                .MaximumLength(50).WithMessage("Last name cannot be longer than 50 characters");
+            .NotEmpty().WithMessage("Пароль є обов'язковим")
+            .MinimumLength(6).WithMessage("Пароль повинен містити щонайменше 6 символів")
+            .Matches("[A-Z]").WithMessage("Пароль повинен містити хоча б одну латинську велику літеру")
+            .Matches("[a-z]").WithMessage("Пароль повинен містити хоча б одну латинську малу літеру")
+            .Matches("[0-9]").WithMessage("Пароль повинен містити хоча б одну цифру")
+            .Matches("[^a-zA-Z0-9]").WithMessage("Пароль повинен містити хоча б один спеціальний символ");
 
     }
 }

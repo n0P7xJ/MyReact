@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Domain.Entities.Delivery;
 using Domain.Entities.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities;
 
-[Table("tblOrders")]
+[Table("tblOrderEntity")]
 public class OrderEntity : BaseEntity<long>
 {
     [ForeignKey(nameof(OrderStatus))]
@@ -14,4 +15,6 @@ public class OrderEntity : BaseEntity<long>
     public UserEntity? User { get; set; }
 
     public ICollection<OrderItemEntity>? OrderItems { get; set; }
+
+    public DeliveryInfoEntity? DeliveryInfo { get; set; }
 }

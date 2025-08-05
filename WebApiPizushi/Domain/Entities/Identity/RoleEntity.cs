@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Domain.Entities.Identity;
-
-public class RoleEntity : IdentityRole<long>
+namespace Domain.Entities.Identity
 {
-    public virtual ICollection<UserRoleEntity>? UserRoles { get; set; } = null;
-    public RoleEntity() : base() { }
-    public RoleEntity(string roleName) : base(roleName) { }
+    public class RoleEntity : IdentityRole<long>
+    {
+        public virtual ICollection<UserRoleEntity>? UserRoles { get; set; } = new List<UserRoleEntity>();
+        public RoleEntity() : base(){}
+
+        public RoleEntity(string roleName) : base(roleName){}
+    }
 }

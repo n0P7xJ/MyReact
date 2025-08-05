@@ -1,32 +1,33 @@
 ﻿using Microsoft.AspNetCore.Http;
-namespace Core.Models.Account;
 
-public class RegisterModel
+namespace Core.Models.Account
 {
-    /// <summary>
-    /// Ім'я користувача
-    /// </summary>
-    /// <example>name</example>
-    public string FirstName { get; set; } = String.Empty;
+    public class RegisterModel
+    {
+        /// <summary>
+        /// Електрона пошта користувача
+        /// </summary>
+        /// <example>Федір</example>
+        public string FirstName { get; set; } = string.Empty;
 
-    /// <summary>
-    /// Прізвище користувача
-    /// </summary>
-    /// <example>surname</example>
-    public string LastName { get; set; } = String.Empty;
+        /// <summary>
+        /// Електрона пошта користувача
+        /// </summary>
+        /// <example>Лупашко</example>
+        public string LastName { get; set; } = string.Empty;
 
-    /// <summary>
-    /// Електронна пошта користувача
-    /// </summary>
-    /// <example>admin@example.com</example>
-    public string Email { get; set; } = String.Empty;
+        /// <summary>
+        /// Електрона пошта користувача
+        /// </summary>
+        /// <example>fedir@example.com</example>
+        public string Email { get; set; } = string.Empty;
 
-    /// <summary>
-    /// Пароль пошта користувача
-    /// </summary>
-    /// <example>pass123?</example>
-    public string Password { get; set; } = String.Empty;
-    public IFormFile? ImageFile { get; set; } = null;
+        /// <summary>
+        /// Пароль користувача
+        /// </summary>
+        /// <example>Admin123!</example>
+        public string Password { get; set; } = string.Empty;
+
+        public IFormFile? ImageFile { get; set; } = null;
+    }
 }
-
-

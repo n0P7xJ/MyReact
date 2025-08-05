@@ -7,19 +7,20 @@ namespace Core.Mapper;
 
 public class CategoryMapper : Profile
 {
-    public CategoryMapper()
-    {
+    public CategoryMapper() { 
         CreateMap<SeederCategoryModel, CategoryEntity>();
-        CreateMap<CategoryEntity, CategoryItemModel>();
-        //.ForMember(x => x.Image, opt => opt.Ignore());
-        CreateMap<CategoryCreateModel, CategoryEntity>()
-            .ForMember(x => x.Name, opt => opt.MapFrom(x=>x.Name.Trim()))
-            .ForMember(x => x.Slug, opt => opt.MapFrom(x => x.Slug.Trim()))
-            .ForMember(x => x.Image, opt => opt.Ignore());
+        CreateMap<CategoryItemModel, CategoryEntity>()
+            .ReverseMap();
 
-        CreateMap<CategoryEditModel, CategoryEntity>()
+        CreateMap<CategoryCreateModel, CategoryEntity>()
             .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name.Trim()))
             .ForMember(x => x.Slug, opt => opt.MapFrom(x => x.Slug.Trim()))
             .ForMember(x => x.Image, opt => opt.Ignore());
+
+        CreateMap<CategoryEditModel, CategoryEntity>();
+        CreateMap<CategoryEntity, CategoryEditModel>()
+            .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name.Trim()))
+            .ForMember(x => x.Slug, opt => opt.MapFrom(x => x.Slug.Trim()))
+            .ForMember(x => x.ImageFile, opt => opt.Ignore());
     }
 }

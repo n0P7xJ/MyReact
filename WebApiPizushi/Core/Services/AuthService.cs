@@ -10,9 +10,9 @@ public class AuthService(IHttpContextAccessor httpContextAccessor,
 {
     public async Task<long> GetUserId()
     {
-        var email = httpContextAccessor.HttpContext?.User?.Claims.First().Value;
+        var email = httpContextAccessor.HttpContext?.User?.Claims.First()?.Value;
         if (string.IsNullOrEmpty(email))
-            throw new UnauthorizedAccessException("User is not authenticated");
+            throw new UnauthorizedAccessException("User is not authenticated.");
         var user = await userManager.FindByEmailAsync(email);
 
         return user.Id;

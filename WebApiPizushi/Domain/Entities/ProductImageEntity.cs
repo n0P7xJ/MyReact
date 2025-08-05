@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities;
 
-[Table("tblProductImages")]
+[Table("tblProductImage")]
 public class ProductImageEntity : BaseEntity<long>
 {
     [StringLength(250)]
@@ -13,5 +13,6 @@ public class ProductImageEntity : BaseEntity<long>
 
     [ForeignKey("Product")]
     public long ProductId { get; set; }
-    public ProductEntity? Product { get; set; }
+    public virtual ProductEntity? Product { get; set; }
+
 }

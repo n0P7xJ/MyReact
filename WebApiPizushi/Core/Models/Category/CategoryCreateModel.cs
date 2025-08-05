@@ -1,13 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.Models.Category;
 
 public class CategoryCreateModel
 {
-    public string Name { get; set; } = string.Empty;
-
-    public string Slug { get; set; } = string.Empty;
-
+    public string Name { get; set; } = String.Empty;
+    public string Slug { get; set; } = String.Empty;
     public IFormFile? ImageFile { get; set; } = null;
 }

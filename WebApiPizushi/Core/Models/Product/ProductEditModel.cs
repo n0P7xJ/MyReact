@@ -14,9 +14,6 @@ public class ProductEditModel
     public long ProductSizeId { get; set; }
     public List<long>? IngredientIds { get; set; }
 
-    /// <summary>
-    /// List of uploaded image files for the product.
-    /// </summary>
-    [BindProperty(Name="imageFiles[]")]
+    [BindProperty(Name = "imageFiles[]")]
     public List<IFormFile>? ImageFiles { get; set; }
 }

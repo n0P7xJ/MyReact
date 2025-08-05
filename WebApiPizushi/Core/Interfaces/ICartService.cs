@@ -4,7 +4,7 @@ namespace Core.Interfaces;
 
 public interface ICartService
 {
-    Task CreateUpdate(CartCreateUpdateModel model);
+    Task CreateUpdate(CartItemCreateModel model);
     Task<List<CartItemModel>> GetCartItems();
     Task Delete(long id);
 }

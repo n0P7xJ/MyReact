@@ -1,21 +1,21 @@
-﻿using Core.Models.Product;
-using Core.Models.Product.Ingredient;
-using Domain.Entities;
+﻿using Core.Models.Ingredient;
+using Core.Models.Product;
+using Core.Models.ProductSize;
+using Core.Models.Search;
+using Core.Models.Search.Params;
 
 namespace Core.Interfaces;
 
 public interface IProductService
 {
-    Task<List<ProductItemModel>> List();
-    Task<ProductItemModel> GetById(int id);
-    Task<List<ProductItemModel>> GetBySlug(string slug);
-    Task<ProductEntity> Create(ProductCreateModel model);
-    Task<ProductItemModel> Edit(ProductEditModel model);
-
-    public Task<IEnumerable<ProductIngredientModel>> GetIngredientsAsync();
-    public Task<IEnumerable<ProductSizeModel>> GetSizesAsync();
-
-    Task<ProductIngredientModel> UploadIngredient(CreateIngredientModel model);
-
-    Task Delete(long id);
+    Task<IEnumerable<ProductItemModel>> GetAllAsync();
+    Task<ProductItemModel> GetByIdAsync(long id);
+    Task<ProductItemModel> GetBySlugAsync(string slug);
+    Task<ProductItemModel> CreateAsync(ProductCreateModel model);
+    Task<IEnumerable<IngredientItemModel>> GetIngredientsAsync();
+    Task<IEnumerable<ProductSizeItemModel>> GetSizesAsync();
+    Task<string> DeleteAsync(ProductDeleteModel model);
+    Task<ProductItemModel> UpdateAsync(ProductEditModel model);
+    Task<IngredientItemModel> UploadIngredient(IngredientCreateModel model);
+    Task<SearchResult<ProductItemModel>> SearchProductsAsync(ProductSearchModel model);
 }

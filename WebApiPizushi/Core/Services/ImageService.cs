@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Core.Interfaces;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Webp;
 using SixLabors.ImageSharp.Processing;
-using Core.Interfaces;
 
 namespace Core.Services;
 
@@ -92,4 +92,3 @@ public class ImageService(IConfiguration configuration) : IImageService
         });
     }
 }
-
