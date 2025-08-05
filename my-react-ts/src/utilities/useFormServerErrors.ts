@@ -10,10 +10,12 @@ export const useFormServerErrors = <T,>(form: FormInstance<T>) => {
     const setServerErrors = useCallback((errors: ServerValidationErrors) => {
         const normalizedErrors = Object.entries(errors).map(
             ([field, messages]) => ({
-                name: field.toLowerCase() as NamePath,
+                name: field as NamePath,
                 errors: messages,
             })
         );
+
+        console.log("Normalized errors", normalizedErrors);
 
         form.setFields(normalizedErrors);
     }, [form]);

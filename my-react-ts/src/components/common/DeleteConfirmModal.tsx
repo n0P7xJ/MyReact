@@ -38,18 +38,19 @@ const DeleteConfirmModal = forwardRef<DeleteConfirmModalRef, DeleteConfirmModalP
 
         return (
             <Modal
-                title="Підтвердження видалення"
+                title={<span className="dark:text-white/90">Підтвердження видалення</span>}
                 open={open}
                 onOk={handleOk}
                 onCancel={handleCancel}
                 okText="Видалити"
                 cancelText="Скасувати"
                 okButtonProps={{ danger: true, loading }}
+                className="dark:bg-gray-900"
             >
-                {message}
+                <span className="dark:text-gray-300">{message}</span>
             </Modal>
         );
     }
 );
 
-export default DeleteConfirmModal; 
+export default DeleteConfirmModal;

@@ -1,19 +1,20 @@
 import {createApi} from "@reduxjs/toolkit/query/react";
-import type {ICategoryCreate, ICategoryEdit, ICategoryItem} from "./types.ts";
+import type {ICategoryCreate, ICategoryDelete, ICategoryEdit, ICategoryItem} from "./types.ts";
 import {createBaseQuery} from "../utilities/createBaseQuery.ts";
 import {serialize} from "object-to-formdata";
 
+
 export const apiCategory = createApi({
-    reducerPath: 'api',
-    baseQuery: createBaseQuery('categories'),
-    tagTypes: ['Categories','Category'],
+    reducerPath: 'api/categories',
+    baseQuery: createBaseQuery('Categories'),
+    tagTypes: ['Category', 'Categories'],
     endpoints: (builder) => ({
         getAllCategories: builder.query<ICategoryItem[], void>({
-            query: () => '',
+            query: () => 'list',
             providesTags: ['Categories'],
         }),
-        getCategoryById: builder.query<ICategoryItem, number>({
-            query: (id) => `${id}`,
+        getCategoryBySlug: builder.query<ICategoryItem, string>({
+            query: (slug) => `${slug}`,
             providesTags: ['Category'],
         }),
         createCategory: builder.mutation<ICategoryItem, ICategoryCreate>({
@@ -21,13 +22,12 @@ export const apiCategory = createApi({
                 try {
                     const formData = serialize(newCategory);
                     return {
-                        url: '',
+                        url: 'create',
                         method: 'POST',
-                        body: formData
-                    }
-                }
-                catch {
-                    throw new Error('Error create category');
+                        body: formData,
+                    };
+                } catch {
+                    throw new Error('Error Create category');
                 }
             },
             invalidatesTags: ['Categories'],
@@ -37,32 +37,38 @@ export const apiCategory = createApi({
                 try {
                     const formData = serialize(newCategory);
                     return {
-                        url: '',
+                        url: 'update',
                         method: 'PUT',
                         body: formData,
                     };
                 } catch {
-                    throw new Error('Error edit category');
+                    throw new Error('Error Edit category');
                 }
             },
             invalidatesTags: ['Categories', 'Category'],
         }),
-        deleteCategory: builder.mutation<void, number>({
-            query: (id) => {
-                return {
-                    url: `${id}`,
-                    method: "DELETE"
+        deleteCategory: builder.mutation<void, ICategoryDelete>({
+            query: (deleteCategory) => {
+                try {
+                    return {
+                        url: 'delete',
+                        method: 'DELETE',
+                        body: deleteCategory
+                    };
+                } catch {
+                    throw new Error('Error delete category');
                 }
             },
-            invalidatesTags: ['Categories','Category'],
+            invalidatesTags: ['Categories'],
         }),
     }),
 });
 
+
 export const {
     useGetAllCategoriesQuery,
-    useEditCategoryMutation,
-    useGetCategoryByIdQuery,
     useCreateCategoryMutation,
     useDeleteCategoryMutation,
+    useEditCategoryMutation,
+    useGetCategoryBySlugQuery
 } = apiCategory;

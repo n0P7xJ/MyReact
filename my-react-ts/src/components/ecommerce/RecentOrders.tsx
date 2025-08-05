@@ -7,7 +7,7 @@ import {
 } from "../ui/table";
 import Badge from "../ui/badge/Badge";
 
-// Define the TypeScript interface for the table rows
+// Define the TypeScript interface for the Table rows
 interface Product {
   id: number; // Unique identifier for each product
   name: string; // Product name
@@ -19,7 +19,7 @@ interface Product {
   status: "Delivered" | "Pending" | "Canceled"; // Status of the product
 }
 
-// Define the table data using the interface
+// Define the Table data using the interface
 const tableData: Product[] = [
   {
     id: 1,
